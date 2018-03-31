@@ -16,9 +16,9 @@ class App extends Component {
         </section>
         <section id="">
           <h2>Input your <span>Time</span> and a <span>Rate</span></h2>
-
-          <InputForm />
-
+          <div className="container">
+            <InputForm />
+          </div>
         </section>
       </main>
     );

@@ -5,7 +5,9 @@ export class InputForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            timeValue: 0,
+            hourValue: 0,
+            minuteValue: 0,
+            secondValue: 0,
             rateValue: 0
         }
         this.handleTimeChange = this.handleTimeChange.bind(this);
@@ -13,9 +15,23 @@ export class InputForm extends React.Component {
     }
 
     handleTimeChange(event) {
-        this.setState({
-            timeValue: event.target.value
-        });
+        switch (event.target.id) {
+            case 'hour-input':
+                this.setState({
+                    hourValue: parseInt(event.target.value)
+                });
+                break;
+            case 'minute-input':
+                this.setState({
+                    minuteValue: parseInt(event.target.value)
+                });
+                break;
+            case 'second-input':
+                this.setState({
+                    secondValue: parseInt(event.target.value)
+                });
+                break;
+        }
     }
 
     handleRateChange(event) {
@@ -25,8 +41,11 @@ export class InputForm extends React.Component {
     }
 
     calculateOutcome() {
-        let timeCalc = this.state.timeValue / 60
-        return Math.round((timeCalc * this.state.rateValue) * 100) / 100;
+        let hoursToMinutes = this.state.hourValue * 60;
+        let secondsToMinutes = this.state.secondValue / 60;
+        let timeInMinutes = hoursToMinutes + this.state.minuteValue + secondsToMinutes;
+
+        return Math.round((timeInMinutes * this.state.rateValue) * 100) / 100;
     }
 
     render() {
@@ -35,11 +54,32 @@ export class InputForm extends React.Component {
                 <h3>
                     You made: ${this.calculateOutcome()}
                 </h3>
-                <div>
-                    <Input id="time-input" labelValue="Time Input (in minutes)" handleChange={this.handleTimeChange} />
+                <div className="time grid grid--three">
+                    <Input
+                        id="hour-input"
+                        labelValue="hrs"
+                        class="time__input"
+                        handleChange={this.handleTimeChange}
+                    />
+                    <Input
+                        id="minute-input"
+                        labelValue="min"
+                        class="time__input"
+                        handleChange={this.handleTimeChange}
+                    />
+                    <Input
+                        id="second-input"
+                        labelValue="sec"
+                        class="time__input"
+                        handleChange={this.handleTimeChange}
+                    />
                 </div>
                 <div>
-                    <Input id="rate-input" labelValue="Rate Input (in $)" handleChange={this.handleRateChange} />
+                    <Input
+                        id="rate-input"
+                        labelValue="Rate Input (in $)"
+                        handleChange={this.handleRateChange}
+                    />
                 </div>
             </React.Fragment>
         )

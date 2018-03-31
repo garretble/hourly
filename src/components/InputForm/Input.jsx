@@ -13,7 +13,7 @@ export class Input extends React.Component {
 
     render() {
         return (
-            <label htmlfor={this.state.id}>{this.state.labelValue}<br />
+            <label htmlFor={this.state.id} className={this.props.class}>{this.state.labelValue}<br />
                 <input type="number" min="0" id={this.state.id} placeholder="0" onChange={this.props.handleChange} />
             </label>
         )
