@@ -5,16 +5,7 @@ import PropTypes from 'prop-types';
 export class Input extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            id: this.props.id,
-            labelValue: this.props.labelValue,
-            inputValue: this.props.inputValue,
-            minValue: this.props.minValue
-        }
     }
-
-
-
 
     render() {
         return (
@@ -29,6 +20,7 @@ export class Input extends React.Component {
                     min={this.props.minValue}
                     name={this.props.inputName}
                     onChange={this.props.handleChange}
+                    pattern={this.props.pattern}
                     placeholder={this.props.placeHolder || '0'}
                     type={this.props.inputType}
                     value={this.props.inputValue}
@@ -49,6 +41,7 @@ Input.propTypes = {
     labelValue: PropTypes.string.isRequired,
     minValue: PropTypes.string,
     maxValue: PropTypes.string,
+    pattern: PropTypes.string,
     placeHolder: PropTypes.string
 
 

@@ -22,3 +22,6 @@
 
 .grid--three {
   grid-template-columns: 1fr 1fr 1fr; }
+  @media screen and (max-width: 700px) {
+    .grid--three {
+      grid-template-columns: none; } }

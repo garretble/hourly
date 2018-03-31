@@ -80,6 +80,7 @@ export class InputForm extends React.Component {
                         class="time__input"
                         handleChange={this.handleTimeChange}
                         minValue="0"
+                        pattern="\d*"
                     />
                     <Input
                         id="minute-input"
@@ -88,6 +89,7 @@ export class InputForm extends React.Component {
                         class="time__input"
                         handleChange={this.handleTimeChange}
                         minValue="0"
+                        pattern="\d*"
                     />
                     <Input
                         id="second-input"
@@ -96,6 +98,7 @@ export class InputForm extends React.Component {
                         class="time__input"
                         handleChange={this.handleTimeChange}
                         minValue="0"
+                        pattern="\d*"
                     />
                 </div>
                 <div className="rate grid grid--three">
@@ -105,6 +108,7 @@ export class InputForm extends React.Component {
                         labelValue="Rate Input (in $)"
                         handleChange={this.handleRateChange}
                         minValue="0"
+                        pattern="\d*"
 
                     />
                     <Input

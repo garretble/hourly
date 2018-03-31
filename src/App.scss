@@ -1,5 +1,6 @@
 // Variables
 $max-width: 960px;
+$mobile-width: 700px;
 
 .App {
   text-align: center;
@@ -30,7 +31,11 @@ $max-width: 960px;
   margin-bottom: 1em;
 }
 .grid--three {
+  @media screen and (max-width: $mobile-width) {
+    grid-template-columns: none;
+  }
   grid-template-columns: 1fr 1fr 1fr
+
 }
 .time {
 
