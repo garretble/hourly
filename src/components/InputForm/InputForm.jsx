@@ -8,10 +8,12 @@ export class InputForm extends React.Component {
             hourValue: 0,
             minuteValue: 0,
             secondValue: 0,
-            rateValue: 0
+            rateValue: 0,
+            rateTypeValue: 'minutes'
         }
         this.handleTimeChange = this.handleTimeChange.bind(this);
         this.handleRateChange = this.handleRateChange.bind(this);
+        this.handleRateTypeChange = this.handleRateTypeChange.bind(this);
     }
 
     handleTimeChange(event) {
@@ -31,6 +33,10 @@ export class InputForm extends React.Component {
                     secondValue: parseInt(event.target.value)
                 });
                 break;
+            default:
+                this.setState({
+                    secondValue: parseInt(event.target.value)
+                });
         }
     }
 
@@ -40,12 +46,24 @@ export class InputForm extends React.Component {
         });
     }
 
+    handleRateTypeChange(event) {
+        this.setState({
+            rateTypeValue: event.target.value
+        });
+    }
+
     calculateOutcome() {
         let hoursToMinutes = this.state.hourValue * 60;
         let secondsToMinutes = this.state.secondValue / 60;
-        let timeInMinutes = hoursToMinutes + this.state.minuteValue + secondsToMinutes;
+        let totalTimeInMinutes = hoursToMinutes + this.state.minuteValue + secondsToMinutes;
+        if (this.state.rateTypeValue == 'minutes') {
+            return Math.round((totalTimeInMinutes * this.state.rateValue) * 100) / 100;
+        }
+        if (this.state.rateTypeValue == "hours") {
+            return Math.round(((totalTimeInMinutes / 60) * this.state.rateValue) * 100) / 100;
+        }
 
-        return Math.round((timeInMinutes * this.state.rateValue) * 100) / 100;
+
     }
 
     render() {
@@ -57,29 +75,57 @@ export class InputForm extends React.Component {
                 <div className="time grid grid--three">
                     <Input
                         id="hour-input"
+                        inputType="number"
                         labelValue="hrs"
                         class="time__input"
                         handleChange={this.handleTimeChange}
+                        minValue="0"
                     />
                     <Input
                         id="minute-input"
+                        inputType="number"
                         labelValue="min"
                         class="time__input"
                         handleChange={this.handleTimeChange}
+                        minValue="0"
                     />
                     <Input
                         id="second-input"
+                        inputType="number"
                         labelValue="sec"
                         class="time__input"
                         handleChange={this.handleTimeChange}
+                        minValue="0"
                     />
                 </div>
-                <div>
+                <div className="rate grid grid--three">
                     <Input
                         id="rate-input"
+                        inputType="number"
                         labelValue="Rate Input (in $)"
                         handleChange={this.handleRateChange}
+                        minValue="0"
+
                     />
+                    <Input
+                        checked={this.state.rateTypeValue === 'minutes'}
+                        id="min-radio"
+                        inputName="rateType"
+                        inputType="radio"
+                        inputValue="minutes"
+                        labelValue="Per Minute"
+                        handleChange={this.handleRateTypeChange}
+                    />
+                    <Input
+                        checked={this.state.rateTypeValue === 'hours'}
+                        id="hour-radio"
+                        inputName="rateType"
+                        inputType="radio"
+                        inputValue="hours"
+                        labelValue="Per Hour"
+                        handleChange={this.handleRateTypeChange}
+                    />
+
                 </div>
             </React.Fragment>
         )
