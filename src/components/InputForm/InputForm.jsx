@@ -75,7 +75,6 @@ export class InputForm extends React.Component {
                 <div className="time grid grid--three">
                     <Input
                         id="hour-input"
-                        inputStep=".01"
                         inputType="number"
                         labelValue="hrs"
                         class="time__input"
@@ -85,7 +84,6 @@ export class InputForm extends React.Component {
                     />
                     <Input
                         id="minute-input"
-                        inputStep=".01"
                         inputType="number"
                         labelValue="min"
                         class="time__input"
@@ -95,7 +93,6 @@ export class InputForm extends React.Component {
                     />
                     <Input
                         id="second-input"
-                        inputStep=".01"
                         inputType="number"
                         labelValue="sec"
                         class="time__input"
@@ -108,7 +105,7 @@ export class InputForm extends React.Component {
                     <Input
                         id="rate-input"
                         inputStep=".01"
-                        inputType="number"
+                        inputType="text"
                         labelValue="Rate Input (in $)"
                         handleChange={this.handleRateChange}
                         minValue="0"
