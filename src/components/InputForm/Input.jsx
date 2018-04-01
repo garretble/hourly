@@ -22,6 +22,7 @@ export class Input extends React.Component {
                     onChange={this.props.handleChange}
                     pattern={this.props.pattern}
                     placeholder={this.props.placeHolder || '0'}
+                    step={this.props.inputStep}
                     type={this.props.inputType}
                     value={this.props.inputValue}
                 />
@@ -36,13 +37,15 @@ Input.propTypes = {
     handleChange: PropTypes.func.isRequired,
     id: PropTypes.string,
     inputName: PropTypes.string,
+    inputStep: PropTypes.string,
     inputType: PropTypes.string.isRequired,
     inputValue: PropTypes.string,
     labelValue: PropTypes.string.isRequired,
     minValue: PropTypes.string,
     maxValue: PropTypes.string,
     pattern: PropTypes.string,
-    placeHolder: PropTypes.string
+    placeHolder: PropTypes.string,
+
 
 
 }

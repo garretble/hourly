@@ -10,9 +10,6 @@ class App extends Component {
           <h1 className="App-title">Hourly</h1>
           <p>A simple rate calculator</p>
         </header>
-        <section>
-
-        </section>
         <section id="">
           <h2>Input your <span>Time</span> and a <span>Rate</span></h2>
           <div className="container">

@@ -20,22 +20,22 @@ export class InputForm extends React.Component {
         switch (event.target.id) {
             case 'hour-input':
                 this.setState({
-                    hourValue: parseInt(event.target.value)
+                    hourValue: parseFloat(event.target.value)
                 });
                 break;
             case 'minute-input':
                 this.setState({
-                    minuteValue: parseInt(event.target.value)
+                    minuteValue: parseFloat(event.target.value)
                 });
                 break;
             case 'second-input':
                 this.setState({
-                    secondValue: parseInt(event.target.value)
+                    secondValue: parseFloat(event.target.value)
                 });
                 break;
             default:
                 this.setState({
-                    secondValue: parseInt(event.target.value)
+                    secondValue: parseFloat(event.target.value)
                 });
         }
     }
@@ -75,6 +75,7 @@ export class InputForm extends React.Component {
                 <div className="time grid grid--three">
                     <Input
                         id="hour-input"
+                        inputStep=".01"
                         inputType="number"
                         labelValue="hrs"
                         class="time__input"
@@ -84,6 +85,7 @@ export class InputForm extends React.Component {
                     />
                     <Input
                         id="minute-input"
+                        inputStep=".01"
                         inputType="number"
                         labelValue="min"
                         class="time__input"
@@ -93,6 +95,7 @@ export class InputForm extends React.Component {
                     />
                     <Input
                         id="second-input"
+                        inputStep=".01"
                         inputType="number"
                         labelValue="sec"
                         class="time__input"
@@ -104,6 +107,7 @@ export class InputForm extends React.Component {
                 <div className="rate grid grid--three">
                     <Input
                         id="rate-input"
+                        inputStep=".01"
                         inputType="number"
                         labelValue="Rate Input (in $)"
                         handleChange={this.handleRateChange}
